@@ -1,0 +1,14 @@
+# Ignore Python cache folders
+__pycache__/
+*.pyc
+
+# Ignore uploaded inspection test videos
+*.mp4
+*.avi
+*.mov
+*.mkv
+
+# Ignore local virtual environment & IDE settings
+.vscode/
+venv/
+.env

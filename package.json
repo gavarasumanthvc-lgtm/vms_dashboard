@@ -1,0 +1,9 @@
+{
+  "name": "vms-sop-analyzer",
+  "private": true,
+  "scripts": {
+    "dev": "py -m streamlit run app.py --server.address 0.0.0.0 --server.port 8501",
+    "api": "python server.py",
+    "share": "npx localtunnel --port 8501"
+  }
+}
