@@ -164,7 +164,7 @@ for uploaded in uploaded_files:
     st.divider()
     vid_col, analysis_col = st.columns([1, 1], gap="large")
 
-    ext = os.path.splittext(uploaded.name)[1].lower or ".mp4"
+    ext = os.path.splittext(uploaded.name)[1].lower() or ".mp4"
     with tempfile.NamedTemporaryFile(delete=False, suffix=ext) as tmp:
         tmp.write(uploaded.read())
         tmp_path = tmp.name
