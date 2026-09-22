@@ -164,7 +164,8 @@ for uploaded in uploaded_files:
     st.divider()
     vid_col, analysis_col = st.columns([1, 1], gap="large")
 
-    with tempfile.NamedTemporaryFile(delete=False, suffix=".mp4") as tmp:
+    ext = os.path.splittext(uploaded.name)[1].lower or ".mp4'
+    with tempfile.NamedTemporaryFile(delete=False, suffix=ext) as tmp:
         tmp.write(uploaded.read())
         tmp_path = tmp.name
 
@@ -174,11 +175,17 @@ for uploaded in uploaded_files:
 
     with analysis_col:
         with st.spinner(f"Analyzing {uploaded.name}..."):
-            result = VMSSOPAnalyzer(
+            try:
+                 result = VMSSOPAnalyzer(
                 blur_threshold=blur_threshold,
                 min_hold_sec=min_hold_sec,
                 process_type=process_type
             ).analyze(tmp_path)
+            except Exception as e:
+                os.remove(tmp_path)
+                st.error(f"Could not analyze {uploaded.name}:{e}")
+                continue
+           
         os.remove(tmp_path)
 
         score   = result["total_score"]
