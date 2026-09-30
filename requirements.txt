@@ -7,3 +7,5 @@ fastapi>=0.111.0
 uvicorn>=0.30.0
 python-multipart>=0.0.9
 qrcode[pil]>=8.0.0
+easyocr>=1.7.0
+ultralytics>=8.2.0
